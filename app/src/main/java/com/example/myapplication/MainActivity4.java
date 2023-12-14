@@ -21,14 +21,14 @@ import java.util.Map;
 public class MainActivity4 extends AppCompatActivity {
     EditText name,email;
     Button submit;
-    String b;
+    String b,a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
         b = getIntent().getStringExtra("BREED_KEY");
-
+        a = getIntent().getStringExtra("AGE_KEY");
         name = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.email);
         submit = (Button) findViewById(R.id.submit);
@@ -52,7 +52,8 @@ public class MainActivity4 extends AppCompatActivity {
             map.put("name", name.getText().toString());
             map.put("email", email.getText().toString());
             map.put("petSelected", b);
-            map.put("status", false);
+            map.put("petAge", a);
+
             FirebaseDatabase.getInstance().getReference().child("users").push()
                     .setValue(map)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

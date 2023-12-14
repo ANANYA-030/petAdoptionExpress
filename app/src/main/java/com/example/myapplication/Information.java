@@ -1,17 +1,17 @@
 package com.example.myapplication;
 
 public class Information {
-    String age, breed,image,info,path;
+    String age, breed,image,info;
 
     Information(){
 
     }
-    public Information(String age,String breed,String image,String info,String path){
+    public Information(String age,String breed,String image,String info){
         this.age=age;
         this.breed=breed;
         this.image=image;
         this.info=info;
-        this.path=path;
+
     }
     public String getAge(){
         return age;
@@ -42,12 +42,6 @@ public class Information {
     }
 
 
-    public String getPath(){
-        return path;
-    }
-    public void setPath(String image){
-        this.path = path;
-    }
 
 
 

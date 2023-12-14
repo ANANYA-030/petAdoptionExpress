@@ -26,7 +26,19 @@ public class MainActivity3 extends AppCompatActivity {
         String info = getIntent().getStringExtra("INFO_KEY");
         String a = getIntent().getStringExtra("AGE_KEY");
         String b = getIntent().getStringExtra("BREED_KEY");
-        String imgP = getIntent().getStringExtra("IMAGE_KEY");
+      //  int imageResourceId = getIntent().getIntExtra("IMAGE_KEY",0);
+        if(b.equals("Persian")){
+           img.setImageResource(R.drawable.persiancat);
+        }
+        else if(b.equals("Siamese")){
+            img.setImageResource(R.drawable.siamesecat);
+        }
+        else if(b.equals("Golden Retriever")){
+            img.setImageResource(R.drawable.goldenretriever);
+        }
+        else if(b.equals("doberman")){
+            img.setImageResource(R.drawable.doberman);
+        }
     //    int imageResourceId = getResources().getIdentifier(imgP,"drawable",getPackageName());
         inf.setText(info);
         age.setText("AGE: "+a);
@@ -39,6 +51,7 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity3.this,MainActivity4.class);
                 intent.putExtra("BREED_KEY",b);
+                intent.putExtra("AGE_KEY",a);
                 startActivity(intent);
             }
         });

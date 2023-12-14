@@ -46,7 +46,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
                @Override
                public void onClick(View view) {
                    String info = model.getInfo();
-                   String imgpath = model.getPath();
+
                    String age = model.getAge();
                    String breed = model.getBreed();
 
@@ -56,7 +56,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
                    intent.putExtra("INFO_KEY",info);
                    intent.putExtra("AGE_KEY",age);
                    intent.putExtra("BREED_KEY",breed);
-                   intent.putExtra("IMAGE_KEY",imgpath);
+
 
                    view.getContext().startActivity(intent);
 
