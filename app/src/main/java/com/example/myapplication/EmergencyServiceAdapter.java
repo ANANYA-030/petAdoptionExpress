@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
+
 import android.text.method.LinkMovementMethod;
+import android.widget.Toast;
 
 
 public class EmergencyServiceAdapter extends FirebaseRecyclerAdapter<EmergencyService, EmergencyServiceAdapter.myViewHolder1> {
@@ -25,7 +31,7 @@ public class EmergencyServiceAdapter extends FirebaseRecyclerAdapter<EmergencySe
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull myViewHolder1 holder, int position, @NonNull EmergencyService model) {
+    protected void onBindViewHolder(@NonNull myViewHolder1 holder, final int position, @NonNull EmergencyService model) {
         holder.serviceNameTextView.setText(model.getServiceName());
         holder.serviceTypeTextView.setText(model.getServiceType());
         String contactString = String.valueOf(model.getContactNumber());
@@ -37,6 +43,28 @@ public class EmergencyServiceAdapter extends FirebaseRecyclerAdapter<EmergencySe
                 String phoneNumber = "tel:" + contactString;
                 Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber));
                 view.getContext().startActivity(dialIntent);
+            }
+        });
+
+        holder.btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.serviceNameTextView.getContext());
+                builder.setTitle("Are you sure you want to delete?");
+                builder.setMessage("Deleted data can't be undo...");
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseDatabase.getInstance().getReference().child("emergency").child(getRef(position).getKey()).removeValue();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(holder.serviceNameTextView.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
             }
         });
    /*
@@ -57,11 +85,14 @@ public class EmergencyServiceAdapter extends FirebaseRecyclerAdapter<EmergencySe
         TextView serviceTypeTextView;
          TextView contactNumberTextView;
 
+         Button btndelete;
+
         public myViewHolder1(@NonNull View itemView) {
             super(itemView);
             serviceNameTextView = (TextView) itemView.findViewById(R.id.serviceNameTextView);
             serviceTypeTextView = (TextView) itemView.findViewById(R.id.serviceTypeTextView);
             contactNumberTextView =(TextView) itemView.findViewById(R.id.contactNumberTextView);
+            btndelete = (Button) itemView.findViewById(R.id.btnDelete);
         }
     }
 }

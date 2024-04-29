@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -47,7 +48,7 @@ public class EmergencyServiceActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EmergencyServiceAdapter emergencyServiceAdapter;
-
+    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +64,15 @@ public class EmergencyServiceActivity extends AppCompatActivity {
 
         emergencyServiceAdapter = new EmergencyServiceAdapter(options);
         recyclerView.setAdapter(emergencyServiceAdapter);
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddEmergencyService.class));
+            }
+        });
     }
 
     @Override

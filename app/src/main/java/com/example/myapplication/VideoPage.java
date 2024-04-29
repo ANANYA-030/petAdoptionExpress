@@ -13,8 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class VideoPage extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    MainAdapter mainAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

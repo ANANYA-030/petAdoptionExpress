@@ -9,8 +9,9 @@
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="394dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:padding="5dp">
 
         <TextView
@@ -23,26 +24,26 @@
             android:textColor="#FF000000"
             android:textSize="30dp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/serviceNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceNameView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:text="Service Name"
-            android:layout_below="@+id/serviceNameView"
             android:textColor="#FF000000"
-            android:textSize="25dp"
-             />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/serviceTypeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceNameTextView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
             android:text="Service Type : "
-            android:layout_below="@+id/serviceNameTextView"
             android:textColor="#FF000000"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -51,42 +52,54 @@
             android:id="@+id/serviceTypeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceTypeView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:text="Service Type  "
-            android:layout_below="@+id/serviceTypeView"
             android:textColor="#FF000000"
-            android:textSize="25dp"
-             />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/contactNumberView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceTypeTextView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
             android:text="Contact number : "
-            android:layout_below="@+id/serviceTypeTextView"
             android:textColor="#FF000000"
             android:textSize="30dp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/contactNumberTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/contactNumberView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="Contact number"
-            android:layout_below="@+id/contactNumberView"
-            android:textColor="#FF000000"
-            android:textSize="30dp"
             android:autoLink="phone"
             android:clickable="true"
             android:focusable="true"
-          />
+            android:text="Contact number"
+            android:textColor="#FF000000"
+            android:textSize="30dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/contactNumberTextView"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:text="Delete"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

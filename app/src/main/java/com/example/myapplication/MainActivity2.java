@@ -10,8 +10,7 @@ import android.widget.Button;
 
 public class MainActivity2 extends AppCompatActivity {
     Button Vbtn, emergency, adoptablePets;
-    RecyclerView recyclerView;
-    MainAdapter mainAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
         Vbtn = (Button) findViewById(R.id.video);
         emergency = (Button) findViewById(R.id.emergency);
         adoptablePets = (Button) findViewById(R.id.adopt);
+
         Vbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,31 +44,10 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
 /*
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseRecyclerOptions<Information> options =
-                new FirebaseRecyclerOptions.Builder<Information>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("pets"), Information.class)
-                        .build();
-        mainAdapter = new MainAdapter(options);
-        recyclerView.setAdapter(mainAdapter);
 
-    }
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mainAdapter.startListening();
-
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        mainAdapter.stopListening();
-
-
-    }
 */
     }
 

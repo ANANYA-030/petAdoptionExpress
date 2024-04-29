@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,10 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
@@ -30,7 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
         b = getIntent().getStringExtra("BREED_KEY");
         a = getIntent().getStringExtra("AGE_KEY");
         name = (EditText) findViewById(R.id.name);
-        email = (EditText) findViewById(R.id.email);
+        email = (EditText) findViewById(R.id.type);
         submit = (Button) findViewById(R.id.submit);
 
         submit.setOnClickListener(new View.OnClickListener() {
